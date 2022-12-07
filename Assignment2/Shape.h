@@ -1,14 +1,18 @@
 #pragma once
+#include <vector>
+#include <iostream>
+#include "Point.h"
+
 class Shape {
 private:
 	int area;
-	int isCircular;
-	int leftTop;
+	bool isCircular;
+	Point leftTop;
 	int perimeter;
-	int points;
+	std::vector<Point> points;
 public:
-	int calculateArea();
-	int calculatePerimeter();
-	int calculatePoints();
-	int toString();
+	virtual void calculateArea(void);
+	virtual void calculatePerimeter(void);
+	virtual void calculatePoints(void);
+	void toString();
 };

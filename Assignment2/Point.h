@@ -1,8 +1,14 @@
 #pragma once
-Class Point{
+class Point {
 private:
-	int x;
-	int y;
+	int _xAxis, _yAxis;
+
 public:
-	int point(int, int);
-}
+	Point(int, int);
+	int xAxis;
+	int yAxis;
+	void setX();
+	void setY();
+	int getX();
+	int getY();
+};

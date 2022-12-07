@@ -1,5 +1,7 @@
 #pragma once
-class Rectangle {
+#include "Shape.h"
+
+class Rectangle : public Shape {
 private:
 	int height;
 	int width;

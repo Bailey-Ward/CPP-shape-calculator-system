@@ -1,5 +1,7 @@
 #pragma once
-class square {
+#include "Shape.h"
+
+class Square : public Shape{
 private:
 	int edge;
 public:

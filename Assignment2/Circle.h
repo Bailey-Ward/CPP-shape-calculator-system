@@ -1,5 +1,7 @@
 #pragma once
-class Circle {
+#include "Shape.h"
+
+class Circle : public Shape {
 private:
 	int radius;
 public:
