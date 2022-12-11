@@ -3,12 +3,11 @@
 
 class Rectangle : public Shape {
 private:
-	int height;
-	int width;
+	int height, width;
 public:
-	int calculateArea();
-	int calculatePerimeter();
-	int calculatePoints();
+	virtual void calculateArea();
+	virtual void calculatePerimeter();
+	virtual void calculatePoints();
 	int move();
 	int scale();
 	int toString();

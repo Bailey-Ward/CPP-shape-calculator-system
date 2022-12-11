@@ -7,9 +7,10 @@ class Shape {
 private:
 	int area;
 	bool isCircular = false;
-	Point leftTop;
 	int perimeter;
-	std::vector<Point> points;
+protected:
+	Point leftTop;
+	std::vector<Point> points{ Point(0,0), Point(0,0), Point(0,0), Point(0,0) };
 public:
 	virtual void calculateArea(void);
 	virtual void calculatePerimeter(void);

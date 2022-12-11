@@ -3,11 +3,14 @@
 
 class Square : public Shape{
 private:
+	Point rightTop;
+	Point rightBottom;
+	Point leftBottom;
 	int edge;
 public:
-	virtual int calculateArea(int);
-	virtual int calculatePerimeter(int);
-	virtual int calculatePoints(Point, int, int);
+	virtual void calculateArea();
+	virtual void calculatePerimeter();
+	virtual void calculatePoints();
 	int move();
 	int scale();
 	int toString();

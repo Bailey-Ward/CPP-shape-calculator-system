@@ -4,6 +4,7 @@ private:
 	int _xAxis, _yAxis;
 
 public:
+	Point(void);
 	Point(int, int);
 	int xAxis;
 	int yAxis;

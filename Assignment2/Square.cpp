@@ -1,16 +1,17 @@
 #include "Square.h"
 
 
-int Square::calculatePoints(Point leftTop,int height,int width) {
-
+void Square::calculatePoints() {
+	Square::rightTop = Point(leftTop.xAxis + edge, leftTop.yAxis);
+	Square::rightBottom = Point(leftTop.xAxis + edge, leftTop.yAxis + edge);
+	Square::leftBottom = Point(leftTop.xAxis, leftTop.yAxis + edge);
+	points = { leftTop, rightTop, rightBottom, leftBottom };
 }
 
-int Square::calculateArea(int height) {
-	int area = height * height;
-	return area;
+void Square::calculateArea() {
+	int area = edge * edge;
 }
 
-int Square::calculatePerimeter(int height) {
-	int perimeter = height * 4;
-	return perimeter;
+void Square::calculatePerimeter() {
+	int perimeter = edge * 4;
 }
