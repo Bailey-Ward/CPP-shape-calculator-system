@@ -5,9 +5,9 @@ class Square : public Shape{
 private:
 	int edge;
 public:
-	int calculateArea();
-	int calculatePerimeter();
-	int calculatePoints();
+	virtual int calculateArea(int);
+	virtual int calculatePerimeter(int);
+	virtual int calculatePoints(Point, int, int);
 	int move();
 	int scale();
 	int toString();
