@@ -8,9 +8,9 @@ void Rectangle::calculatePoints() {
 }
 
 void Rectangle::calculateArea() {
-	int area = height * width;
+	 Shape::area = height * width;
 }
 
 void Rectangle::calculatePerimeter() {
-	int perimeter = 2*(height + width);
+	Shape::perimeter = 2*(height + width);
 }

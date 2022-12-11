@@ -5,10 +5,12 @@
 
 class Shape {
 private:
-	int area;
+	
 	bool isCircular = false;
-	int perimeter;
+	
 protected:
+	int area;
+	int perimeter;
 	Point leftTop;
 	std::vector<Point> points{ Point(0,0), Point(0,0), Point(0,0), Point(0,0) };
 public:

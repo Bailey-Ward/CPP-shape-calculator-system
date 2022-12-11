@@ -9,9 +9,9 @@ void Square::calculatePoints() {
 }
 
 void Square::calculateArea() {
-	int area = edge * edge;
+	Shape::area = edge * edge;
 }
 
 void Square::calculatePerimeter() {
-	int perimeter = edge * 4;
+	Shape::perimeter = edge * 4;
 }

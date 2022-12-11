@@ -3,6 +3,6 @@ class Movable {
 private:
 
 public:
-	void move(int, int);
-	void scale(float, float);
+	virtual void move(int, int);
+	virtual void scale(float, float);
 };

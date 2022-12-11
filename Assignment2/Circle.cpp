@@ -6,9 +6,9 @@ void Circle::calculatePoints() {
 }
 
 void Circle::calculateArea() {
-	int area = (M_PI * radius) * 2;
+	Shape::area = (M_PI * radius) * 2;
 }
 
 void Circle::calculatePerimeter() {
-	int perimeter = 2 * M_PI * radius;
+	Shape::perimeter = 2 * M_PI * radius;
 }
