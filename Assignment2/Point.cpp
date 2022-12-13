@@ -19,9 +19,9 @@ void Point::setY() {
 }
 
 int Point::getX() {
-	_xAxis = xAxis;
+	return _xAxis;
 }
 
 int Point::getY() { //^^^Getters and setters for accessing private xAxis and yAxis variables
-	_xAxis = xAxis;
+	return _yAxis;
 }

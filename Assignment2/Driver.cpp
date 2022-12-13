@@ -48,6 +48,8 @@ int main()
 		// implement a string tokenizer to populate the parameters vector 
 		// check function strtok_s
 
+
+
 		// as a result of the process, parameters[0] should hold your command, followed by your parameters 
 		string command = parameters[0];
 
