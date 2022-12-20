@@ -77,7 +77,7 @@ int main()
 
 			Rectangle* r = new Rectangle(x, y, h, w);
 			shapes.push_back(r);
-			cout << r->toString(); /* instead of this, you may implement operator overloadig and 
+			cout << r; /* instead of this, you may implement operator overloadig and
 									use cout << r which will give you additional points */
 		}
 		else if (command.compare("addS") == 0) {
@@ -89,7 +89,7 @@ int main()
 
 			Square* s = new Square(x, y, e);
 			shapes.push_back(s);
-			cout << s->toString();
+			cout << s;
 		}
 
 		if (command.compare("addC") == 0) {
@@ -101,7 +101,7 @@ int main()
 
 			Circle* c = new Circle(x, y, r);
 			shapes.push_back(c);
-			cout << c->toString();
+			cout << c;
 			
 		}
 		else if (command.compare("scale") == 0) {
@@ -115,8 +115,10 @@ int main()
 		}
 		else if (command.compare("move") == 0) {
 			// move object at index 
-			int shapeNo; // read from parameters
+			int shapeNo = stoi(parameters[1].c_str()); // read from parameters
 			// you may want to check if the index exists or not!
+			int x = stoi(parameters[2].c_str());
+			int y = stoi(parameters[3].c_str());
 			
 			// Study the following code. A Shape object is not Movable, but all derived classes are...
 			// you can't automatically type cast from a Shape to a Movable, but you can force a downcasting

@@ -1,11 +1,48 @@
 #include "Rectangle.h"
 
-void Rectangle::calculatePoints() {
-	Point rightTop = Point(leftTop.xAxis + width, leftTop.yAxis);
-	Point rightBottom = Point(leftTop.xAxis + width, leftTop.yAxis + height);
-	Point leftBottom = Point(leftTop.xAxis, leftTop.yAxis + height);
-	points = { leftTop, rightTop, rightBottom, leftBottom };
+Rectangle::Rectangle(int topLeftX, int topLeftY, int _height, int _width) {
+	Rectangle::leftTop = Point(topLeftX, topLeftY);
+	height = _height;
+	width = _width;
+	calculateArea();
+	calculatePerimeter();
+	calculatePoints();
 }
+
+void Rectangle::calculatePoints() {
+	points.clear();
+	points.push_back(&leftTop);
+	points.push_back(new Point(leftTop.getX() + width, leftTop.getY()));
+	points.push_back(new Point(leftTop.getX() + width, leftTop.getY() + height));
+	points.push_back(new Point(leftTop.getX(), leftTop.getY() + height));
+}
+
+std::string Rectangle::getPoints() {
+	std::string tempVar = "Points[";
+	std::vector<Point*>::iterator pointsGetter;
+	for (pointsGetter = points.begin(); pointsGetter < points.end(); pointsGetter++)
+	{
+		tempVar += "(" + std::to_string((*pointsGetter)->getX()) + "," + std::to_string((*pointsGetter)->getY()) + ")";
+	}
+	tempVar += "]";
+	return tempVar;
+}
+
+void Rectangle::move(int moveX, int moveY) {
+	leftTop = Point(moveX, moveY);
+	calculatePoints();
+	toString();
+}
+
+void Rectangle::scale(float scale) {
+	height = height * scale;
+	width = width * scale;
+	calculatePoints();
+	calculateArea();
+	calculatePerimeter();
+	toString();
+}
+
 
 void Rectangle::calculateArea() {
 	 Shape::area = height * width;
@@ -13,4 +50,21 @@ void Rectangle::calculateArea() {
 
 void Rectangle::calculatePerimeter() {
 	Shape::perimeter = 2*(height + width);
+}
+
+
+
+std::string Rectangle::toString() {
+	std::stringstream tempVar;
+	tempVar << "Rectangle[h = " + std::to_string(height) + "]\n" << "Rectangle[w = " + std::to_string(width) + "]\n";
+	tempVar << getPoints().c_str();
+	tempVar << "\nArea=" + std::to_string(area) + " Perimeter=" + std::to_string(perimeter) + "\n";
+	return tempVar.str();
+}
+
+std::ostream& operator<<(std::ostream& os, Rectangle* r)
+{
+	std::string tempVar = r->toString();
+	os << tempVar.c_str();
+	return os;
 }

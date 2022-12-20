@@ -3,17 +3,20 @@
 #include "Shape.h"
 #include "Movable.h"
 #include <cmath>
-
+#include <sstream>
 
 class Circle : public Shape, public Movable {
 private:
-	int radius;
-public:
-	Circle(int, int);
+	float radius;
 	virtual void calculateArea();
 	virtual void calculatePerimeter();
 	virtual void calculatePoints();
-	int move();
-	int scale();
+
+public:
+	Circle(int, int, float);
+	std::string getPoints();
+	void move(int,int);
+	void scale(float);
 	std::string toString();
+	friend std::ostream& operator<<(std::ostream&, Circle*);
 };

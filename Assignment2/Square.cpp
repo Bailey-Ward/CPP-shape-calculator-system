@@ -4,9 +4,9 @@
 Square::Square(int topLeftX, int topLeftY, int edgeLength) {
 	Square::leftTop = Point(topLeftX, topLeftY);
 	edge = edgeLength;
+	calculatePoints();
 	calculateArea();
 	calculatePerimeter();
-	calculatePoints();
 }
 
 
@@ -19,7 +19,7 @@ void Square::calculatePoints() {
 }
 
 std::string Square::getPoints() {
-	std::string tempVar = "Points[*";
+	std::string tempVar = "Points[";
 	std::vector<Point*>::iterator pointsGetter;
 	for (pointsGetter = points.begin(); pointsGetter < points.end(); pointsGetter++)
 	{
@@ -35,8 +35,12 @@ void Square::move(int moveX, int moveY) {
 	toString();
 }
 
-void Square::scale(float scaleX) {
-	edge = edge * scaleX;
+void Square::scale(float scale) {
+	edge = edge * scale;
+	calculatePoints();
+	calculateArea();
+	calculatePerimeter();
+	toString();
 }
 
 std::string Square::toString() {
@@ -55,9 +59,9 @@ void Square::calculatePerimeter() {
 	Shape::perimeter = edge * 4;
 }
 
-std::ostream& operator<<(std::ostream& os, Square* c)
+std::ostream& operator<<(std::ostream& os, Square* s)
 {
-	std::string tempVar = c->toString();
+	std::string tempVar = s->toString();
 	os << tempVar.c_str();
 	return os;
 }
