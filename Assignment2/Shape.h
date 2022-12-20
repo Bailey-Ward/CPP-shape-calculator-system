@@ -9,13 +9,15 @@ private:
 	bool isCircular = false;
 	
 protected:
-	int area;
-	int perimeter;
+	int area{};
+	int perimeter{};
 	Point leftTop;
-	std::vector<Point> points{ Point(0,0), Point(0,0), Point(0,0), Point(0,0) };
+	std::vector<Point*> points;
+	virtual std::string getPoints() = 0;
+
 public:
-	virtual void calculateArea(void);
-	virtual void calculatePerimeter(void);
+	virtual void calculateArea() = 0;
+	virtual void calculatePerimeter() = 0;
 	virtual void calculatePoints() = 0;
 	void toString();
 };

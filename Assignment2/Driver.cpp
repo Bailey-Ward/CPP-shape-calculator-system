@@ -47,7 +47,13 @@ int main()
 		
 		// implement a string tokenizer to populate the parameters vector 
 		// check function strtok_s
-
+		char* nextToken;
+		char* tokenized = strtok_s(cstr, " ", &nextToken);
+		while (tokenized != NULL)
+		{
+			parameters.push_back(tokenized);
+			tokenized = strtok_s(NULL, " ", &nextToken);
+		}
 
 
 		// as a result of the process, parameters[0] should hold your command, followed by your parameters 
@@ -63,10 +69,10 @@ int main()
 			// note that the the parameters vector contains ascii values
 			// HINT: stoi function converts from string to int
 
-			x = parameters[1].c_str(); // fix me! also note that x is not previously defined :(
-			// int y = ...
-			// int h = ...
-			// int w = ...
+			int x = stoi(parameters[1].c_str()); // fix me! also note that x is not previously defined :(
+			int y = stoi(parameters[2].c_str());
+			int h = stoi(parameters[3].c_str());
+			int w = stoi(parameters[4].c_str());
 
 
 			Rectangle* r = new Rectangle(x, y, h, w);
@@ -77,6 +83,10 @@ int main()
 		else if (command.compare("addS") == 0) {
 			// get parameters
 			// ...
+			int x = stoi(parameters[1].c_str());
+			int y = stoi(parameters[2].c_str());
+			int e = stoi(parameters[3].c_str());
+
 			Square* s = new Square(x, y, e);
 			shapes.push_back(s);
 			cout << s->toString();
@@ -85,6 +95,10 @@ int main()
 		if (command.compare("addC") == 0) {
 			// get parameters
 			// ...
+			int x = stoi(parameters[1].c_str());
+			int y = stoi(parameters[2].c_str());
+			int r = stoi(parameters[3].c_str());
+
 			Circle* c = new Circle(x, y, r);
 			shapes.push_back(c);
 			cout << c->toString();
