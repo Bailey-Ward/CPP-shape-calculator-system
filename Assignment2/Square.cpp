@@ -14,8 +14,8 @@ void Square::calculatePoints() {
 	points.clear();
 	points.push_back(&leftTop);
 	points.push_back(new Point(leftTop.getX() + edge, leftTop.getY()));
-	points.push_back(new Point(leftTop.getX(), leftTop.getY() + edge));
 	points.push_back(new Point(leftTop.getX() + edge, leftTop.getY() + edge));
+	points.push_back(new Point(leftTop.getX(), leftTop.getY() + edge));
 }
 
 std::string Square::getPoints() {
@@ -35,8 +35,8 @@ void Square::move(int moveX, int moveY) {
 	toString();
 }
 
-void Square::scale(float scale) {
-	edge = edge * scale;
+void Square::scale(float scaleX, float ScaleY) {
+	edge = edge * scaleX;
 	calculatePoints();
 	calculateArea();
 	calculatePerimeter();

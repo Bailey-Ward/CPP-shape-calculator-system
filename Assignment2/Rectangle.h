@@ -13,7 +13,7 @@ public:
 	Rectangle(int, int, int, int);
 	std::string getPoints();
 	void move(int,int);
-	void scale(float);
+	void scale(float,float);
 	std::string toString();
 	friend std::ostream& operator<<(std::ostream&, Rectangle*);
 

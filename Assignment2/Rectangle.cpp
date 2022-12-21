@@ -34,9 +34,9 @@ void Rectangle::move(int moveX, int moveY) {
 	toString();
 }
 
-void Rectangle::scale(float scale) {
-	height = height * scale;
-	width = width * scale;
+void Rectangle::scale(float scaleX, float scaleY) {
+	height = height * scaleY;
+	width = width * scaleX;
 	calculatePoints();
 	calculateArea();
 	calculatePerimeter();
@@ -56,7 +56,7 @@ void Rectangle::calculatePerimeter() {
 
 std::string Rectangle::toString() {
 	std::stringstream tempVar;
-	tempVar << "Rectangle[h = " + std::to_string(height) + "]\n" << "Rectangle[w = " + std::to_string(width) + "]\n";
+	tempVar << "Rectangle[h = " + std::to_string(height) + " w = " + std::to_string(width) + "]\n";
 	tempVar << getPoints().c_str();
 	tempVar << "\nArea=" + std::to_string(area) + " Perimeter=" + std::to_string(perimeter) + "\n";
 	return tempVar.str();

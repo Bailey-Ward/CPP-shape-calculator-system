@@ -107,7 +107,11 @@ int main()
 		else if (command.compare("scale") == 0) {
 			// scale object at index... the scaling needs to be isotropic in case of circle and square 
 			// you may want to check if the index exists or not!
-			
+			int num = stoi(parameters[1].c_str() - 1);
+			int scaleX = stoi(parameters[2].c_str());
+			int scaleY = stoi(parameters[3].c_str());
+
+			dynamic_cast<Movable*>(shapes[num]->scale(scaleX, scaleY));
 			// Multiple inhertitance is tricky! The Shape class does nto have a scale function, the Movable does!
 			// As a result all your derived classes have scale functions... 
 			// You may need to use type casting wisely to use polymorphic functionality!
@@ -132,11 +136,22 @@ int main()
 		}
 		else if (command.compare("display") == 0) {
 			// this is not given in our example, but why don't you implement a display function which shows all objects stored in shapes?
+			std::vector<Shape*>::iterator pointers;
+			for (pointers = shapes.begin(); pointers < shapes.end(); pointers++)
+			{
+				cout << (*pointers)->toString() << endl;
+			}
 		}
 
 		// do any necessary postprocessing at the end of each loop...
 		// yes, there is some necessary postprocessing...
 		cout << endl << endl;
+		if (command != "exit") {
+			parameters.clear();
+			userCommand.clear();
+			command.clear();
+			cout << "Memory cleared";
+		}
 	}
 
 	cout << "Press any key to continue...";

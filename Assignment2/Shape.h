@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Point.h"
 
+
 class Shape {
 protected:
 	bool isCircular;

@@ -1,19 +1,20 @@
 #include "Circle.h"
 
+Circle::Circle(int topLeftX, int topLeftY, float cRadius)
+{
+	leftTop = Point(topLeftX, topLeftY);
+	radius = cRadius;
+	calculatePoints();
+	calculateArea();
+	calculatePerimeter();
+}
+
 void Circle::calculatePoints() {
 	points.clear();
 	points.push_back(&leftTop);
 	points.push_back(new Point(leftTop.getX() + 2 * radius, leftTop.getY() + 2 * radius));
 }
 
-Circle::Circle(int topLeftX, int topLeftY, float cRadius)
-{
-	leftTop = Point(topLeftX, topLeftX);
-	cRadius = radius;
-	calculatePoints();
-	calculateArea();
-	calculateArea();
-}
 
 std::string Circle::getPoints() {
 	std::string tempVar = "Points[";
@@ -40,8 +41,8 @@ void Circle::move(int moveX, int moveY) {
 	toString();
 }
 
-void Circle::scale(float scale) {
-	radius = radius * scale;
+void Circle::scale(float scaleX, float scaleY) {
+	radius = radius * scaleX;
 	calculatePoints();
 	calculateArea();
 	calculatePerimeter();
@@ -49,7 +50,7 @@ void Circle::scale(float scale) {
 }
 
 void Circle::calculateArea() {
-	Shape::area = (M_PI * radius) * 2;
+	Shape::area = M_PI * radius * radius;
 }
 
 void Circle::calculatePerimeter() {
