@@ -1,15 +1,13 @@
 #pragma once
 class Point {
 private:
-	int _xAxis, _yAxis;
+	int _xAxis, _yAxis; //private variables to restrict access
 
 public:
-	Point(void);
-	Point(int, int);
+	Point(void); //default constructor for points
+	Point(int, int); //constructor for points
 	int xAxis;
 	int yAxis;
-	void setX();
-	void setY();
 	int getX();
 	int getY();
 };

@@ -5,18 +5,18 @@
 #include <cmath>
 #include <sstream>
 
-class Circle : public Shape, public Movable {
+class Circle : public Shape, public Movable { //circle class inherits from shape and moveable
 private:
 	float radius;
 	virtual void calculateArea();
-	virtual void calculatePerimeter();
+	virtual void calculatePerimeter(); //these functions are virtual to allow for dynamic dispatch
 	virtual void calculatePoints();
 
 public:
-	Circle(int, int, float);
+	Circle(int, int, float); //constructor for square objects declared here
 	std::string getPoints();
-	void move(int,int);
-	void scale(float,float);
+	virtual void move(int,int);
+	virtual void scale(float,float);
 	std::string toString();
-	friend std::ostream& operator<<(std::ostream&, Circle*);
+	friend std::ostream& operator<<(std::ostream&, Circle*); //friend funtion created to overload << operator 
 };

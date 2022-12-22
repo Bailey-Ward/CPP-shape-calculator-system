@@ -10,18 +10,10 @@ Point::Point(int xAxis, int yAxis) { //Constructor for point object which contai
 	_yAxis = yAxis;
 }
 
-void Point::setX() { 
-	_xAxis = xAxis;
-}
-
-void Point::setY() {
-	_yAxis = yAxis;
-}
-
 int Point::getX() {
 	return _xAxis;
 }
 
-int Point::getY() { //^^^Getters and setters for accessing private xAxis and yAxis variables
+int Point::getY() { //^^^Getters for returning private axis variables for calculations
 	return _yAxis;
 }

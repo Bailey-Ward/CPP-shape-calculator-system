@@ -107,11 +107,12 @@ int main()
 		else if (command.compare("scale") == 0) {
 			// scale object at index... the scaling needs to be isotropic in case of circle and square 
 			// you may want to check if the index exists or not!
-			int num = stoi(parameters[1].c_str() - 1);
-			int scaleX = stoi(parameters[2].c_str());
-			int scaleY = stoi(parameters[3].c_str());
+			int shapeNo = stoi(parameters[1].c_str());
+			float scaleX = stoi(parameters[2].c_str());
+			float scaleY = stoi(parameters[3].c_str());
 
-			dynamic_cast<Movable*>(shapes[num]->scale(scaleX, scaleY));
+			dynamic_cast<Movable*>(shapes[shapeNo - 1])->scale(scaleX, scaleY);
+			cout << shapes[shapeNo - 1]->toString();
 			// Multiple inhertitance is tricky! The Shape class does nto have a scale function, the Movable does!
 			// As a result all your derived classes have scale functions... 
 			// You may need to use type casting wisely to use polymorphic functionality!
@@ -150,7 +151,6 @@ int main()
 			parameters.clear();
 			userCommand.clear();
 			command.clear();
-			cout << "Memory cleared";
 		}
 	}
 

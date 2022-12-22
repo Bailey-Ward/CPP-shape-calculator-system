@@ -35,8 +35,8 @@ void Rectangle::move(int moveX, int moveY) {
 }
 
 void Rectangle::scale(float scaleX, float scaleY) {
-	height = height * scaleY;
-	width = width * scaleX;
+	height = height * scaleX;
+	width = width * scaleY;
 	calculatePoints();
 	calculateArea();
 	calculatePerimeter();
