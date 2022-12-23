@@ -7,13 +7,13 @@
 
 class Circle : public Shape, public Movable { //circle class inherits from shape and moveable
 private:
-	float radius;
+	int radius;
 	virtual void calculateArea();
 	virtual void calculatePerimeter(); //these functions are virtual to allow for dynamic dispatch
 	virtual void calculatePoints();
 
 public:
-	Circle(int, int, float); //constructor for square objects declared here
+	Circle(int, int, int); //constructor for square objects declared here
 	std::string getPoints();
 	virtual void move(int,int);
 	virtual void scale(float,float);

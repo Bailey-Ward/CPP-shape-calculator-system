@@ -64,46 +64,61 @@ int main()
 		// in case of too few arguments, you may remind the user the correct format
 
 		if (command.compare("addR") == 0) {
-			// get parameters in the correct order
-			// The following four lines have a type mismatch error
-			// note that the the parameters vector contains ascii values
-			// HINT: stoi function converts from string to int
+			if (parameters.size() == 5) {
+				// get parameters in the correct order
+				// The following four lines have a type mismatch error
+				// note that the the parameters vector contains ascii values
+				// HINT: stoi function converts from string to int
 
-			int x = stoi(parameters[1].c_str()); // fix me! also note that x is not previously defined :(
-			int y = stoi(parameters[2].c_str());
-			int h = stoi(parameters[3].c_str());
-			int w = stoi(parameters[4].c_str());
+				int x = stoi(parameters[1].c_str()); // fix me! also note that x is not previously defined :(
+				int y = stoi(parameters[2].c_str());
+				int h = stoi(parameters[3].c_str());
+				int w = stoi(parameters[4].c_str());
 
-
-			Rectangle* r = new Rectangle(x, y, h, w);
-			shapes.push_back(r);
-			cout << r; /* instead of this, you may implement operator overloadig and
-									use cout << r which will give you additional points */
+				Rectangle* r = new Rectangle(x, y, h, w);
+				shapes.push_back(r);
+				cout << r; /* instead of this, you may implement operator overloadig and
+										use cout << r which will give you additional points */
+			}
+			else {
+				std::cout << "Invalid number of parameters";
+			}
 		}
+
 		else if (command.compare("addS") == 0) {
-			// get parameters
-			// ...
-			int x = stoi(parameters[1].c_str());
-			int y = stoi(parameters[2].c_str());
-			int e = stoi(parameters[3].c_str());
+			if (parameters.size() == 4) {
+				// get parameters
+				// ...
+				int x = stoi(parameters[1].c_str());
+				int y = stoi(parameters[2].c_str());
+				int e = stoi(parameters[3].c_str());
 
-			Square* s = new Square(x, y, e);
-			shapes.push_back(s);
-			cout << s;
+				Square* s = new Square(x, y, e);
+				shapes.push_back(s);
+				cout << s;
+			}
+			else {
+				std::cout << "Parameters have not been input correctly";
+			}
 		}
 
-		if (command.compare("addC") == 0) {
+		else if (command.compare("addC") == 0) {
 			// get parameters
 			// ...
-			int x = stoi(parameters[1].c_str());
-			int y = stoi(parameters[2].c_str());
-			int r = stoi(parameters[3].c_str());
+			if (parameters.size() == 4) {
+				int x = stoi(parameters[1].c_str());
+				int y = stoi(parameters[2].c_str());
+				int r = stoi(parameters[3].c_str());
 
-			Circle* c = new Circle(x, y, r);
-			shapes.push_back(c);
-			cout << c;
-			
+				Circle* c = new Circle(x, y, r);
+				shapes.push_back(c);
+				cout << c;
+			}
+			else {
+				std::cout << "parameters have not been input correctly";
+			}
 		}
+
 		else if (command.compare("scale") == 0) {
 			// scale object at index... the scaling needs to be isotropic in case of circle and square 
 			// you may want to check if the index exists or not!
@@ -111,13 +126,22 @@ int main()
 			float scaleX = stoi(parameters[2].c_str());
 			float scaleY = stoi(parameters[3].c_str());
 
-			dynamic_cast<Movable*>(shapes[shapeNo - 1])->scale(scaleX, scaleY);
-			cout << shapes[shapeNo - 1]->toString();
+
+			if (shapeNo >= 0 && shapeNo < shapes.size()) {
+				dynamic_cast<Movable*>(shapes[shapeNo - 1])->scale(scaleX, scaleY);
+				cout << shapes[shapeNo - 1]->toString();
+			}
+			else {
+				std::cout << "This shape does not exist!";
+			}
+
+
+
 			// Multiple inhertitance is tricky! The Shape class does nto have a scale function, the Movable does!
 			// As a result all your derived classes have scale functions... 
 			// You may need to use type casting wisely to use polymorphic functionality!
-			
 		}
+
 		else if (command.compare("move") == 0) {
 			// move object at index 
 			int shapeNo = stoi(parameters[1].c_str()); // read from parameters
@@ -127,14 +151,19 @@ int main()
 			
 			// Study the following code. A Shape object is not Movable, but all derived classes are...
 			// you can't automatically type cast from a Shape to a Movable, but you can force a downcasting
+
+
 			Movable *m = dynamic_cast<Movable*>(shapes[shapeNo - 1]);
 			m->move(x, y);
+
+
 			// scale should work similarly...
 
 			// note that here you should see the corresponding toString output for the derived classes...
 			// if toString is not a virtual function, you may see the base class functionality :(
 			cout << shapes[shapeNo - 1]->toString();
 		}
+
 		else if (command.compare("display") == 0) {
 			// this is not given in our example, but why don't you implement a display function which shows all objects stored in shapes?
 			std::vector<Shape*>::iterator pointers;

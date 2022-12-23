@@ -1,6 +1,8 @@
 #include "Rectangle.h"
 
-Rectangle::Rectangle(int topLeftX, int topLeftY, int _height, int _width) {
+//See square.cpp for more comprehensive documentation on functions as they are similar and I'm too lazy to retype the same comments
+
+Rectangle::Rectangle(int topLeftX, int topLeftY, int _height, int _width) { //Rectangle constructor takes 4 ints, the topleft X and Y coordinates, as well as the heigh and width of the rectangle
 	Rectangle::leftTop = Point(topLeftX, topLeftY);
 	height = _height;
 	width = _width;
@@ -43,7 +45,6 @@ void Rectangle::scale(float scaleX, float scaleY) {
 	toString();
 }
 
-
 void Rectangle::calculateArea() {
 	 Shape::area = height * width;
 }
@@ -51,8 +52,6 @@ void Rectangle::calculateArea() {
 void Rectangle::calculatePerimeter() {
 	Shape::perimeter = 2*(height + width);
 }
-
-
 
 std::string Rectangle::toString() {
 	std::stringstream tempVar;

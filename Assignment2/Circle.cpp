@@ -1,6 +1,8 @@
 #include "Circle.h"
 
-Circle::Circle(int topLeftX, int topLeftY, float cRadius)
+//See square.cpp for more comprehensive documentation on functions as they are similar and I'm too lazy to retype the same comments
+
+Circle::Circle(int topLeftX, int topLeftY, int cRadius) //circle constructor takes 3 ints, the topleft X and Y coordinates, and the length of the radius
 {
 	leftTop = Point(topLeftX, topLeftY);
 	radius = cRadius;
@@ -9,12 +11,11 @@ Circle::Circle(int topLeftX, int topLeftY, float cRadius)
 	calculatePerimeter();
 }
 
-void Circle::calculatePoints() {
+void Circle::calculatePoints() { //only 2 points are calculated here, leftTop and rightBottom (as per the brief)
 	points.clear();
 	points.push_back(&leftTop);
 	points.push_back(new Point(leftTop.getX() + 2 * radius, leftTop.getY() + 2 * radius));
 }
-
 
 std::string Circle::getPoints() {
 	std::string tempVar = "Points[";
