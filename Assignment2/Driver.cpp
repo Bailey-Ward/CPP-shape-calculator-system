@@ -48,17 +48,15 @@ int main()
 		// implement a string tokenizer to populate the parameters vector 
 		// check function strtok_s
 		char* nextToken;
-		char* tokenized = strtok_s(cstr, " ", &nextToken);
+		char* tokenized = strtok_s(cstr, " ", &nextToken); //tokenises the string by " "
 		while (tokenized != NULL)
 		{
 			parameters.push_back(tokenized);
 			tokenized = strtok_s(NULL, " ", &nextToken);
 		}
 
-
 		// as a result of the process, parameters[0] should hold your command, followed by your parameters 
 		string command = parameters[0];
-
 
 		// in the following code, consider checking for the arguments.
 		// in case of too few arguments, you may remind the user the correct format
@@ -81,7 +79,7 @@ int main()
 										use cout << r which will give you additional points */
 			}
 			else {
-				std::cout << "Invalid number of parameters";
+				std::cout << "Parameters have not been input correctly. The correct format is: X Y height width";
 			}
 		}
 
@@ -98,7 +96,7 @@ int main()
 				cout << s;
 			}
 			else {
-				std::cout << "Parameters have not been input correctly";
+				std::cout << "Parameters have not been input correctly. The correct format is: X Y edge";
 			}
 		}
 
@@ -115,7 +113,7 @@ int main()
 				cout << c;
 			}
 			else {
-				std::cout << "parameters have not been input correctly";
+				std::cout << "parameters have not been input correctly. The correct format is X Y radius";
 			}
 		}
 
@@ -126,17 +124,15 @@ int main()
 			float scaleX = stoi(parameters[2].c_str());
 			float scaleY = stoi(parameters[3].c_str());
 
+			if (shapeNo < shapes.size() + 1 && shapeNo >= 0) {
 
-			if (shapeNo >= 0 && shapeNo < shapes.size()) {
+
 				dynamic_cast<Movable*>(shapes[shapeNo - 1])->scale(scaleX, scaleY);
 				cout << shapes[shapeNo - 1]->toString();
 			}
 			else {
-				std::cout << "This shape does not exist!";
+				std::cout << "mo";
 			}
-
-
-
 			// Multiple inhertitance is tricky! The Shape class does nto have a scale function, the Movable does!
 			// As a result all your derived classes have scale functions... 
 			// You may need to use type casting wisely to use polymorphic functionality!
@@ -176,7 +172,7 @@ int main()
 		// do any necessary postprocessing at the end of each loop...
 		// yes, there is some necessary postprocessing...
 		cout << endl << endl;
-		if (command != "exit") {
+		if (command != "exit") { //clears all vectors except for shape
 			parameters.clear();
 			userCommand.clear();
 			command.clear();
