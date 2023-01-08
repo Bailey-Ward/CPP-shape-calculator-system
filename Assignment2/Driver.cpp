@@ -51,47 +51,42 @@ int main()
 		char* tokenized = strtok_s(cstr, " ", &nextToken); //tokenises the string by " "
 		while (tokenized != NULL)
 		{
-			parameters.push_back(tokenized);
+			parameters.push_back(tokenized); //tokenised string is added to the parameters vector
 			tokenized = strtok_s(NULL, " ", &nextToken);
 		}
 
 		// as a result of the process, parameters[0] should hold your command, followed by your parameters 
 		string command = parameters[0];
 
-		// in the following code, consider checking for the arguments.
-		// in case of too few arguments, you may remind the user the correct format
 
 		if (command.compare("addR") == 0) {
-			if (parameters.size() == 5) {
-				// get parameters in the correct order
-				// The following four lines have a type mismatch error
-				// note that the the parameters vector contains ascii values
-				// HINT: stoi function converts from string to int
+			if (parameters.size() == 5) { //checks to see if correct amount of parameters have been input
 
-				int x = stoi(parameters[1].c_str()); // fix me! also note that x is not previously defined :(
+				int x = stoi(parameters[1].c_str()); //takes in the parameters for the object in the correct order
 				int y = stoi(parameters[2].c_str());
 				int h = stoi(parameters[3].c_str());
 				int w = stoi(parameters[4].c_str());
 
-				Rectangle* r = new Rectangle(x, y, h, w);
-				shapes.push_back(r);
-				cout << r; /* instead of this, you may implement operator overloadig and
-										use cout << r which will give you additional points */
+				Rectangle* r = new Rectangle(x, y, h, w); //new keyword dynamically allocates memory for the rectangle object which is constructed using the parameters
+				//this rectangle type object is assigned to a pointer called r
+
+				shapes.push_back(r); //object is added to the shapes vector
+				cout << r; //operator overloading is used so that cout prints the rectangle object
 			}
-			else {
+			else { //error message to remind the user of the correct input format
 				std::cout << "Parameters have not been input correctly. The correct format is: X Y height width";
 			}
 		}
 
 		else if (command.compare("addS") == 0) {
 			if (parameters.size() == 4) {
-				// get parameters
-				// ...
+
 				int x = stoi(parameters[1].c_str());
 				int y = stoi(parameters[2].c_str());
 				int e = stoi(parameters[3].c_str());
 	
-				Square* s = new Square(x, y, e);
+				Square* s = new Square(x, y, e); //new keyword dynamically allocates memory for the square object which is constructed using the parameters
+				//this square type object is assigned to a pointer called s
 				shapes.push_back(s);
 				cout << s;
 			}
@@ -101,14 +96,14 @@ int main()
 		}
 
 		else if (command.compare("addC") == 0) {
-			// get parameters
-			// ...
-			if (parameters.size() == 4) {
+
+			if (parameters.size() == 4) {	//checks to see if correct amount of parameters are input
 				int x = stoi(parameters[1].c_str());
 				int y = stoi(parameters[2].c_str());
 				int r = stoi(parameters[3].c_str());
 
-				Circle* c = new Circle(x, y, r);
+				Circle* c = new Circle(x, y, r); //new keyword dynamically allocates memory for the circle object which is constructed using the parameters
+				//this circle type object is assigned to a pointer called r
 				shapes.push_back(c);
 				cout << c;
 			}
@@ -117,49 +112,38 @@ int main()
 			}
 		}
 
-		else if (command.compare("scale") == 0) {
-			// scale object at index... the scaling needs to be isotropic in case of circle and square 
-			// you may want to check if the index exists or not!
+		else if (command.compare("scale") == 0) { 
 			int shapeNo = stoi(parameters[1].c_str());
 			float scaleX = stoi(parameters[2].c_str());
 			float scaleY = stoi(parameters[3].c_str());
 
-			if (shapeNo < shapes.size() + 1 && shapeNo >= 0) {
-
-
-				dynamic_cast<Movable*>(shapes[shapeNo - 1])->scale(scaleX, scaleY);
+			if (shapeNo < shapes.size() + 1 && shapeNo >= 0) {	//checks to see if shape exists at this index
+				dynamic_cast<Movable*>(shapes[shapeNo - 1])->scale(scaleX, scaleY); //scale is called for pointer at index (scale and toString are virtual)
 				cout << shapes[shapeNo - 1]->toString();
 			}
 			else {
-				std::cout << "this shape does not exist";
+				std::cout << "No shape exists at this index!";
 			}
-			// Multiple inhertitance is tricky! The Shape class does nto have a scale function, the Movable does!
-			// As a result all your derived classes have scale functions... 
-			// You may need to use type casting wisely to use polymorphic functionality!
 		}
 
 		else if (command.compare("move") == 0) {
-			// move object at index 
+			// moves object at index 
+
 			int shapeNo = stoi(parameters[1].c_str()); // read from parameters
-			// you may want to check if the index exists or not!
 			int x = stoi(parameters[2].c_str());
 			int y = stoi(parameters[3].c_str());
 			
-			// Study the following code. A Shape object is not Movable, but all derived classes are...
-			// you can't automatically type cast from a Shape to a Movable, but you can force a downcasting
-
-			Movable *m = dynamic_cast<Movable*>(shapes[shapeNo - 1]);
-			m->move(x, y);
-
-			// scale should work similarly...
-
-			// note that here you should see the corresponding toString output for the derived classes...
-			// if toString is not a virtual function, you may see the base class functionality :(
-			cout << shapes[shapeNo - 1]->toString();
+			if (shapeNo < shapes.size() + 1 && shapeNo >= 0) {	//checks to see if a shape exists at this index
+				Movable* m = dynamic_cast<Movable*>(shapes[shapeNo - 1]);
+				m->move(x, y);	//move is used on this pointer to give the object a new x and y (move is virtual and so is toString)
+				cout << shapes[shapeNo - 1]->toString();	//objects new coordinates are printed
+			}
+			else {
+				std::cout << "No shape exists at this index!" << std::endl;
+			}		
 		}
-
-		else if (command.compare("display") == 0) {
-			// this is not given in our example, but why don't you implement a display function which shows all objects stored in shapes?
+		
+		else if (command.compare("display") == 0) { //iterates through the vector and prints all shapes in order of input
 			std::vector<Shape*>::iterator pointers;
 			for (pointers = shapes.begin(); pointers < shapes.end(); pointers++)
 			{
@@ -167,7 +151,7 @@ int main()
 			}
 		}
 
-		else if (command.compare("clear") == 0) { //destructs all objects and clears the vector
+		else if (command.compare("clear") == 0) { //iterates through the vector and destructs all objects then clears the vector
 			std::vector<Shape*>::iterator pointers;
 			for (pointers = shapes.begin(); pointers < shapes.end(); pointers++) {
 				delete *pointers;
@@ -176,14 +160,12 @@ int main()
 			shapes.clear();
 		}
 
-		else {
+		else { //if invalid commands are entered, the console will inform the user and restart the loop
 			std::cout << "Invalid command, try again\n" << std::endl;
 		}
-
-		// do any necessary postprocessing at the end of each loop...
-		// yes, there is some necessary postprocessing...
 		cout << endl << endl;
-		if (command != "exit") { //clears all vectors except for shape
+
+		if (command != "exit") { //clears all vectors except for shape if the loop resets
 			parameters.clear();
 			userCommand.clear();
 			command.clear();

@@ -14,7 +14,7 @@ private:
 
 public:
 	Circle(int, int, int); //constructor for square objects declared here
-	virtual ~Circle();
+	virtual ~Circle(); //virtual destructor for each child class
 	std::string getPoints();
 	virtual void move(int,int);
 	virtual void scale(float,float);

@@ -18,5 +18,5 @@ protected: //variables below are protected to allow derived classes to inherit
 
 public:
 	virtual std::string toString() = 0;
-	virtual ~Shape() {};
+	virtual ~Shape() {}; //virtual destructor for dynamic dispatch
 };
