@@ -178,6 +178,10 @@ int main()
 			shapes.clear();
 		}
 
+		else {
+			std::cout << "Invalid command, try again\n" << std::endl;
+		}
+
 		// do any necessary postprocessing at the end of each loop...
 		// yes, there is some necessary postprocessing...
 		cout << endl << endl;

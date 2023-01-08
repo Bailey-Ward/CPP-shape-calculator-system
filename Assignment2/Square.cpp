@@ -64,6 +64,6 @@ std::ostream& operator<<(std::ostream& os, Square* s) //operator overloading fun
 	return os; //when << is called to print, the modified output stream is printed instead
 }
 
-Square::~Square() {
+Square::~Square() { //virtual destructors are used to allow for dynamic dispatch
 	std::cout << "Square object has been deleted" << std::endl;
 }
