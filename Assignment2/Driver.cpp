@@ -169,6 +169,15 @@ int main()
 			}
 		}
 
+		else if (command.compare("clear") == 0) { //destructs all objects and clears the vector
+			std::vector<Shape*>::iterator pointers;
+			for (pointers = shapes.begin(); pointers < shapes.end(); pointers++) {
+				delete* pointers;
+			}
+			std::cout << "Memory successfully cleared" << std::endl;
+			shapes.clear();
+		}
+
 		// do any necessary postprocessing at the end of each loop...
 		// yes, there is some necessary postprocessing...
 		cout << endl << endl;

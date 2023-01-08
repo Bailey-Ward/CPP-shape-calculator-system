@@ -67,3 +67,7 @@ std::ostream& operator<<(std::ostream& os, Rectangle* r)
 	os << tempVar.c_str();
 	return os;
 }
+
+Rectangle::~Rectangle() {
+	std::cout << "Rectangle object has been deleted" << std::endl;
+}

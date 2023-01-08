@@ -12,6 +12,7 @@ private:
 
 public:
 	Rectangle(int, int, int, int); //constructor for rectangle objects declared here
+	virtual ~Rectangle();
 	std::string getPoints();
 	virtual void move(int,int);
 	virtual void scale(float,float);

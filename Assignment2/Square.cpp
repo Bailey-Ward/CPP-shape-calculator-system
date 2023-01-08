@@ -63,3 +63,7 @@ std::ostream& operator<<(std::ostream& os, Square* s) //operator overloading fun
 	os << tempVar.c_str(); //the tempVar is then added to the output stream
 	return os; //when << is called to print, the modified output stream is printed instead
 }
+
+Square::~Square() {
+	std::cout << "Square object has been deleted" << std::endl;
+}

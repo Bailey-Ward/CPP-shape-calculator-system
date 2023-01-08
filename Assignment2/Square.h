@@ -14,6 +14,7 @@ class Square : public Shape, public Movable{ //square class inherits from shape 
 public:
 	std::string getPoints();
 	Square(int, int, int); //constructor for square objects declared here
+	virtual ~Square();
 	virtual void move(int, int);
 	virtual void scale(float, float); 
 	std::string toString();

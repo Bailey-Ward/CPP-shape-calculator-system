@@ -64,3 +64,7 @@ std::ostream& operator<<(std::ostream& os, Circle* c)
 	os << tempVar.c_str();
 	return os;
 }
+
+Circle::~Circle() {
+	std::cout << "Circle object has been deleted" << std::endl;
+}
