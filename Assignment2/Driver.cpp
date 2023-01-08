@@ -90,7 +90,7 @@ int main()
 				int x = stoi(parameters[1].c_str());
 				int y = stoi(parameters[2].c_str());
 				int e = stoi(parameters[3].c_str());
-
+	
 				Square* s = new Square(x, y, e);
 				shapes.push_back(s);
 				cout << s;
@@ -131,7 +131,7 @@ int main()
 				cout << shapes[shapeNo - 1]->toString();
 			}
 			else {
-				std::cout << "mo";
+				std::cout << "this shape does not exist";
 			}
 			// Multiple inhertitance is tricky! The Shape class does nto have a scale function, the Movable does!
 			// As a result all your derived classes have scale functions... 
@@ -148,10 +148,8 @@ int main()
 			// Study the following code. A Shape object is not Movable, but all derived classes are...
 			// you can't automatically type cast from a Shape to a Movable, but you can force a downcasting
 
-
 			Movable *m = dynamic_cast<Movable*>(shapes[shapeNo - 1]);
 			m->move(x, y);
-
 
 			// scale should work similarly...
 
@@ -172,7 +170,7 @@ int main()
 		else if (command.compare("clear") == 0) { //destructs all objects and clears the vector
 			std::vector<Shape*>::iterator pointers;
 			for (pointers = shapes.begin(); pointers < shapes.end(); pointers++) {
-				delete* pointers;
+				delete *pointers;
 			}
 			std::cout << "Memory successfully cleared" << std::endl;
 			shapes.clear();
