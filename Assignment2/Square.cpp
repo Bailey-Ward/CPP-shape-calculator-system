@@ -16,6 +16,22 @@ void Square::calculatePoints() {
 	points.push_back(new Point(leftTop.getX(), leftTop.getY() + edge));
 }
 
+void Square::calculateArea() {
+	Shape::area = edge * edge; //calculations for area of a square
+}
+
+void Square::calculatePerimeter() {
+	Shape::perimeter = edge * 4; //calculations for perimeter of a square
+}
+
+std::string Square::toString() { //function converts all integers to strings via the std::to_string() method and returns them
+	std::stringstream tempVar;
+	tempVar << "Square[e = " + std::to_string(edge) + "] \n"; //edge is returned in square brackets
+	tempVar << getPoints().c_str();
+	tempVar << "\nArea=" + std::to_string(area) + " Perimeter=" + std::to_string(perimeter) + "\n"; //area and perimeter are returned without square brackets
+	return tempVar.str();
+}
+
 std::string Square::getPoints() { //function for printing the points to the console
 	std::string tempVar = "Points[";
 	std::vector<Point*>::iterator pointsGetter; //iterator pointsGetter is declared to iterate through the vector
@@ -41,23 +57,7 @@ void Square::scale(float scaleX, float ScaleY) { //scales a selected shape by a 
 	toString();
 }
 
-std::string Square::toString() { //function converts all integers to strings via the std::to_string() method and returns them
-	std::stringstream tempVar;
-	tempVar << "Square[e = " + std::to_string(edge) + "] \n"; //edge is returned in square brackets
-	tempVar << getPoints().c_str();
-	tempVar << "\nArea=" + std::to_string(area) + " Perimeter=" + std::to_string(perimeter) + "\n"; //area and perimeter are returned without square brackets
-	return tempVar.str();
-}
-
-void Square::calculateArea() {
-	Shape::area = edge * edge; //calculations for area of a square
-}
-
-void Square::calculatePerimeter() {
-	Shape::perimeter = edge * 4; //calculations for perimeter of a square
-}
-
-std::ostream& operator<<(std::ostream& os, Square* s) //operator overloading function for << operator, takes an ostream object (os) and a pointer to a square object (s)
+std::ostream& operator<<(std::ostream& os, Square* s) //friend function for operator overloading function for << operator, takes a reference to an ostream object (os) and a pointer to a square object (s)
 {
 	std::string tempVar = s->toString(); //toString is called on the square pointer, and then it is added to the tempVar
 	os << tempVar.c_str(); //the tempVar is then added to the output stream

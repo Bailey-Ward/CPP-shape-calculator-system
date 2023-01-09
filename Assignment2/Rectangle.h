@@ -5,10 +5,10 @@
 
 class Rectangle : public Shape, public Movable { //rectangle class inherits from shape and movable
 private:
+	int height, width;
 	virtual void calculateArea();
 	virtual void calculatePerimeter(); //these functions are virtual to allow for dynamic dispatch
 	virtual void calculatePoints();
-	int height, width;
 
 public:
 	Rectangle(int, int, int, int); //constructor for rectangle objects declared here
