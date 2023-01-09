@@ -39,11 +39,11 @@ int main()
 	{
 		cout << "Enter the command: ";
 		
-		getline(cin, userCommand);
+		getline(cin, userCommand); //reads user input via cin and assigns it to string userCommand. 
 
-		char * cstr = new char[userCommand.length() + 1];
+		char * cstr = new char[userCommand.length() + 1]; //userCommand plus 1 extra character for the null character are assigned to a pointer called cstr
 
-		strcpy_s(cstr, userCommand.length()+1, userCommand.c_str());
+		strcpy_s(cstr, userCommand.length()+1, userCommand.c_str()); //returns a null character terminated c-string pointed to by cstr
 		
 		// implement a string tokenizer to populate the parameters vector 
 		// check function strtok_s
@@ -51,7 +51,7 @@ int main()
 		char* tokenized = strtok_s(cstr, " ", &nextToken); //tokenises the string by " "
 		while (tokenized != NULL)
 		{
-			parameters.push_back(tokenized); //tokenised string is added to the parameters vector
+			parameters.push_back(tokenized); //tokenised strings are added to the parameters vector
 			tokenized = strtok_s(NULL, " ", &nextToken);
 		}
 

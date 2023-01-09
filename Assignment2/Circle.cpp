@@ -1,12 +1,12 @@
 #include "Circle.h"
 
-//See square.cpp for more comprehensive documentation on functions as they are similar and I'm too lazy to retype the same comments
+//See square.cpp for more comprehensive documentation on functions 
 
 Circle::Circle(int topLeftX, int topLeftY, int cRadius) //circle constructor takes 3 ints, the topleft X and Y coordinates, and the length of the radius
 {
-	leftTop = Point(topLeftX, topLeftY);
-	radius = cRadius;
-	calculatePoints();
+	leftTop = Point(topLeftX, topLeftY); //topleftX and topleftY are passed to the points constructor to create a point object which is assigned to leftTop
+	radius = cRadius; //cRadius is assigned to radius because radius is a private variable and cannot be directly accessed
+	calculatePoints(); //maths functions are called
 	calculateArea();
 	calculatePerimeter();
 }

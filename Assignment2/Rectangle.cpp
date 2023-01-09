@@ -6,9 +6,9 @@ Rectangle::Rectangle(int topLeftX, int topLeftY, int _height, int _width) { //Re
 	Rectangle::leftTop = Point(topLeftX, topLeftY);
 	height = _height;
 	width = _width;
+	calculatePoints();
 	calculateArea();
 	calculatePerimeter();
-	calculatePoints();
 }
 
 void Rectangle::calculatePoints() {
