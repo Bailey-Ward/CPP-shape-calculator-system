@@ -160,9 +160,6 @@ int main()
 			shapes.clear();
 		}
 
-		else { //if invalid commands are entered, the console will inform the user and restart the loop
-			std::cout << "Invalid command, try again\n" << std::endl;
-		}
 		cout << endl << endl;
 
 		if (command != "exit") { //clears all vectors except for shape if the loop resets
